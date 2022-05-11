@@ -1,6 +1,6 @@
-# Clips
+# Video Clips
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+The Idea behind this project is to allow users upload their own video clips and watch the other users video clips
 
 ## Development server
 
