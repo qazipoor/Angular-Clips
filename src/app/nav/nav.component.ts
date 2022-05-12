@@ -13,8 +13,7 @@ export class NavComponent implements OnInit {
     public modal: ModalService,
     public auth: AuthService,
     private afAuth: AngularFireAuth
-  ) { 
-  }
+  ) { }
 
   ngOnInit(): void {
   }
