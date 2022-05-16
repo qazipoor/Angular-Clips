@@ -64,9 +64,9 @@ export class AuthService {
   }
 
   public async logout($event?: Event) {
-    // if ($event) {
-      $event?.preventDefault();
-    // }
+    if ($event) {
+      $event.preventDefault();
+    }
 
     await this.auth.signOut();
 
