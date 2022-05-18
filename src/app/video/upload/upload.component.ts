@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { ClipService } from 'src/app/services/clip.service';
 import { Router } from '@angular/router';
+import { FfmpegService } from 'src/app/services/ffmpeg.service';
 
 @Component({
   selector: 'app-upload',
@@ -37,8 +38,10 @@ export class UploadComponent implements OnDestroy {
     private auth: AngularFireAuth,
     private clipsService: ClipService,
     private router: Router,
+    public ffmpegService: FfmpegService
   ) {
     auth.user.subscribe((user) => (this.user = user));
+    this.ffmpegService.init();
   }
 
   ngOnDestroy(): void {
@@ -93,7 +96,7 @@ export class UploadComponent implements OnDestroy {
             title: this.title.value,
             fileName: `${clipFileName}.mp4`,
             url,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           };
 
           const clipDocRef = await this.clipsService.createClip(clip);
@@ -106,10 +109,8 @@ export class UploadComponent implements OnDestroy {
           this.showPercentage = false;
 
           setTimeout(() => {
-            this.router.navigate([
-              'clip', clipDocRef.id
-            ])
-          }, 1000)
+            this.router.navigate(['clip', clipDocRef.id]);
+          }, 1000);
         },
         error: (error) => {
           this.uploadForm.enable();
