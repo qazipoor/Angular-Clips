@@ -1,3 +1,7 @@
+Live Preview on Netlify:
+<a href="(https://angular-clips.netlify.app/">https://angular-clips.netlify.app</a>
+
+
 # Video Clips
 
 The Idea behind this project is to allow users upload their own video clips and watch the other users video clips
